@@ -1,7 +1,7 @@
-import { IExercise } from '@/entities/exercise/exercise.types'
+import { IWorkoutExercise } from '@/entities/exercise/exercise.types'
 import { Set } from '@/entities/set/set'
 
-export class Exercise implements IExercise {
+export class Exercise implements IWorkoutExercise {
   readonly description: string
   readonly link: string
   readonly name: string

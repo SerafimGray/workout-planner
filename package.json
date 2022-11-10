@@ -20,6 +20,7 @@
     "*.{ts,js,vue}": "eslint . --ext vue,ts,js --fix"
   },
   "dependencies": {
+    "dexie": "^3.2.2",
     "pinia": "^2.0.17",
     "vue": "^3.2.37",
     "vue-router": "^4.1.3"
