@@ -13,7 +13,7 @@ class DB extends Dexie {
     super('workoutPlannerDB')
 
     this.version(1).stores({
-      exercises: '++id, name, description, link' // Primary key and indexed props
+      exercises: '++id, name, description, link'
     })
   }
 }
