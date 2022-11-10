@@ -1,10 +1,6 @@
 import Dexie, { Table } from 'dexie'
 
-import { IExercise } from '@/entities/exercise/exercise.types'
-
-interface IExerciseTable extends IExercise {
-  id?: number
-}
+import { IExerciseTable } from '@/entities/db/db.types'
 
 class DB extends Dexie {
   exercises!: Table<IExerciseTable>

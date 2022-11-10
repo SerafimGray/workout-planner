@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 
-import { db } from '@/db'
+import { db } from '@/entities/db/db'
 
 const status = ref('')
 const name = ref('')
