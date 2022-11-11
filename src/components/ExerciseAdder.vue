@@ -28,7 +28,7 @@ async function add() {
 </script>
 
 <template>
-  <fieldset>
+  <el-form>
     <legend>Add new exercise</legend>
 
     <label>
@@ -53,5 +53,5 @@ async function add() {
     <button @click="add">Add Exercise</button>
 
     <p>{{ status }}</p>
-  </fieldset>
+  </el-form>
 </template>
