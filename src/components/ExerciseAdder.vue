@@ -1,20 +1,20 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 
-import { db } from '@/entities/db/db'
+import { Exercise } from '@/entities/exercise/exercise'
+import { DBService } from '@/services/db/db'
 
 const status = ref('')
 const name = ref('')
 const description = ref('')
 const link = ref('')
 
+const dbService = new DBService()
+
 async function add() {
   try {
-    const id = await db.exercises.add({
-      name: name.value,
-      description: description.value,
-      link: link.value
-    })
+    const exercise = new Exercise(name.value, description.value, link.value)
+    const id = await dbService.addExercise(exercise)
 
     status.value = `Exercise ${name.value} successfully added. Got id ${id}`
 

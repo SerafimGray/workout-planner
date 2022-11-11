@@ -36,7 +36,7 @@ module.exports = {
       {
         semi: false,
         singleQuote: true,
-        printWidth: 120,
+        printWidth: 80,
         trailingComma: 'none',
         arrowParens: 'avoid',
         endOfLine: 'auto'
@@ -62,17 +62,23 @@ module.exports = {
       'error',
       {
         patterns: [
-          // no relative imports allowed, always use alias, it makes easier to move files later if necessary
+          // no relative imports allowed, always use alias,
+          // it makes easier to move files later if necessary
           './**',
           '../**'
         ]
       }
     ],
-    '@typescript-eslint/no-unused-vars': 'error'
+    '@typescript-eslint/no-unused-vars': 'error',
+    'max-len': ['error', { code: 80 }],
+    'array-bracket-newline': ['error', { multiline: true }]
   },
   overrides: [
     {
-      files: ['**/__tests__/*.{j,t}s?(x)', '**/tests/unit/**/*.spec.{j,t}s?(x)'],
+      files: [
+        '**/__tests__/*.{j,t}s?(x)',
+        '**/tests/unit/**/*.spec.{j,t}s?(x)'
+      ],
       env: {
         jest: true
       }
