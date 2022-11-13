@@ -54,18 +54,9 @@ function onValidate(prop: FormItemProp, isValid: boolean) {
   <el-form :model="form" :rules="rules" @validate="onValidate">
     <legend>Add new exercise</legend>
 
-    <ExerciseNameInput
-      @input="form.name = $event"
-      :is-name-valid="isNameValid"
-      :value="form.name"
-    />
+    <ExerciseNameInput v-model="form.name" :is-name-valid="isNameValid" />
 
-    <label>
-      description:
-      <input v-model="form.description" type="text" />
-    </label>
-
-    <br />
+    <ExerciseDescriptionInput v-model="form.description" />
 
     <label>
       link:

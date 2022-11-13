@@ -11,6 +11,7 @@ declare module '@vue/runtime-core' {
     ElFormItem: typeof import('element-plus/es')['ElFormItem']
     ElInput: typeof import('element-plus/es')['ElInput']
     ExerciseAdder: typeof import('./src/components/ExerciseAdder.vue')['default']
+    ExerciseDescriptionInput: typeof import('./src/components/ExerciseDescriptionInput.vue')['default']
     ExerciseNameInput: typeof import('./src/components/ExerciseNameInput.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']

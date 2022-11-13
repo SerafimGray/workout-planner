@@ -1,33 +1,24 @@
 <script lang="ts" setup>
-import { computed } from 'vue'
+import { ref } from 'vue'
 
 const props = defineProps<{
   isNameValid: boolean
-  value: string
+  modelValue: string
 }>()
 
-const emit = defineEmits(['input'])
-
-const exerciseName = computed({
-  get() {
-    return props.value
-  },
-
-  set(value) {
-    emit('input', value)
-  }
-})
+const input = ref('')
 </script>
 
 <template>
   <el-form-item label="Name:" prop="name">
     <el-input
-      v-model="exerciseName"
+      v-model="input"
       aria-describedby="exercise-name-alert"
       :aria-invalid="!props.isNameValid"
       clearable
       placeholder="Enter exercise name"
       required
+      @input="$emit('update:modelValue', $event)"
     />
 
     <template #error="validateMessage">
