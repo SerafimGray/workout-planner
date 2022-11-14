@@ -2,27 +2,27 @@
 import { ref } from 'vue'
 
 const props = defineProps<{
-  isNameValid: boolean
+  isLinkValid: boolean
   modelValue: string
 }>()
 
-const name = ref('')
+const link = ref('')
 </script>
 
 <template>
-  <el-form-item label="Name:" prop="name">
+  <el-form-item label="Link:" prop="link">
     <el-input
-      v-model="name"
-      aria-describedby="exercise-name-alert"
-      :aria-invalid="!props.isNameValid"
+      v-model="link"
+      aria-describedby="exercise-link-alert"
+      :aria-invalid="!props.isLinkValid"
       clearable
-      placeholder="Enter exercise name"
-      required
+      placeholder="Enter exercise link"
+      type="url"
       @input="$emit('update:modelValue', $event)"
     />
 
     <template #error="validateMessage">
-      <div class="el-form-item__error" id="exercise-name-alert" role="alert">
+      <div class="el-form-item__error" id="exercise-link-alert" role="alert">
         {{ validateMessage.error }}
       </div>
     </template>
