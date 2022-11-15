@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import ExerciseAdder from '@/components/ExerciseAdder.vue'
+import ExerciseForm from '@/components/exercise-form/ExerciseForm.vue'
 </script>
 
 <template>
-  <ExerciseAdder />
+  <ExerciseForm />
 </template>

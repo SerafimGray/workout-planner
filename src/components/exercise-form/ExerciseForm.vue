@@ -2,10 +2,10 @@
 import type { FormInstance, FormItemProp, FormRules } from 'element-plus'
 import { reactive, ref } from 'vue'
 
-import ExerciseDescriptionInput from '@/components/ExerciseDescriptionInput.vue'
-import ExerciseLinkInput from '@/components/ExerciseLinkInput.vue'
-import ExerciseNameInput from '@/components/ExerciseNameInput.vue'
-import ExerciseSubmitButton from '@/components/ExerciseSubmitButton.vue'
+import DescriptionInput from '@/components/exercise-form/DescriptionInput.vue'
+import LinkInput from '@/components/exercise-form/LinkInput.vue'
+import NameInput from '@/components/exercise-form/NameInput.vue'
+import SubmitButton from '@/components/exercise-form/SubmitButton.vue'
 
 const status = ref('')
 
@@ -41,7 +41,7 @@ const rules = reactive<FormRules>({
   link: [{ validator: validateLink, trigger: 'blur' }]
 })
 
-function validateLink(rule: any, value: string, callback: any) {
+function validateLink(_: unknown, value: string, callback: any) {
   const urlPattern = new RegExp(
     '^(https?:\\/\\/)?' + // validate protocol
       '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' +
@@ -82,17 +82,13 @@ const formRef = ref<FormInstance>()
   >
     <legend>Add new exercise</legend>
 
-    <ExerciseNameInput v-model="form.name" :is-name-valid="isPropValid.name" />
+    <NameInput v-model="form.name" :is-name-valid="isPropValid.name" />
 
-    <ExerciseDescriptionInput v-model="form.description" />
+    <DescriptionInput v-model="form.description" />
 
-    <ExerciseLinkInput v-model="form.link" :is-link-valid="isPropValid.link" />
+    <LinkInput v-model="form.link" :is-link-valid="isPropValid.link" />
 
-    <ExerciseSubmitButton
-      :form="form"
-      :validate="formRef?.validate"
-      @add="onAdd"
-    />
+    <SubmitButton :form="form" :validate="formRef?.validate" @add="onAdd" />
 
     <p>{{ status }}</p>
   </el-form>
