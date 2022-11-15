@@ -7,6 +7,7 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    ElButton: typeof import('element-plus/es')['ElButton']
     ElForm: typeof import('element-plus/es')['ElForm']
     ElFormItem: typeof import('element-plus/es')['ElFormItem']
     ElInput: typeof import('element-plus/es')['ElInput']
@@ -14,6 +15,7 @@ declare module '@vue/runtime-core' {
     ExerciseDescriptionInput: typeof import('./src/components/ExerciseDescriptionInput.vue')['default']
     ExerciseLinkInput: typeof import('./src/components/ExerciseLinkInput.vue')['default']
     ExerciseNameInput: typeof import('./src/components/ExerciseNameInput.vue')['default']
+    ExerciseSubmitButton: typeof import('./src/components/ExerciseSubmitButton.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }

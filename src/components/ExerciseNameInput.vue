@@ -1,23 +1,18 @@
 <script lang="ts" setup>
-import { ref } from 'vue'
-
 const props = defineProps<{
   isNameValid: boolean
   modelValue: string
 }>()
-
-const name = ref('')
 </script>
 
 <template>
   <el-form-item label="Name:" prop="name">
     <el-input
-      v-model="name"
       aria-describedby="exercise-name-alert"
       :aria-invalid="!props.isNameValid"
       clearable
+      :model-value="props.modelValue"
       placeholder="Enter exercise name"
-      required
       @input="$emit('update:modelValue', $event)"
     />
 

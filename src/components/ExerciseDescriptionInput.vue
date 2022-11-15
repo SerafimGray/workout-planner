@@ -1,7 +1,19 @@
 <script lang="ts" setup>
-import { ref } from 'vue'
+import { computed } from 'vue'
+const props = defineProps<{
+  modelValue: string
+}>()
 
-const description = ref('')
+const emit = defineEmits<{ (e: 'update:modelValue', value: string): void }>()
+
+const description = computed({
+  get() {
+    return props.modelValue
+  },
+  set(value) {
+    emit('update:modelValue', value)
+  }
+})
 </script>
 
 <template>
@@ -11,7 +23,6 @@ const description = ref('')
       :autosize="{ minRows: 2 }"
       placeholder="Enter exercise description"
       type="textarea"
-      @input="$emit('update:modelValue', $event)"
     />
   </el-form-item>
 </template>

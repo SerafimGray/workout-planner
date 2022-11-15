@@ -1,12 +1,11 @@
 <script setup lang="ts">
-import type { FormItemProp, FormRules } from 'element-plus'
+import type { FormInstance, FormItemProp, FormRules } from 'element-plus'
 import { reactive, ref } from 'vue'
 
 import ExerciseDescriptionInput from '@/components/ExerciseDescriptionInput.vue'
 import ExerciseLinkInput from '@/components/ExerciseLinkInput.vue'
 import ExerciseNameInput from '@/components/ExerciseNameInput.vue'
-import { Exercise } from '@/entities/exercise/exercise'
-import { DBService } from '@/services/db/db'
+import ExerciseSubmitButton from '@/components/ExerciseSubmitButton.vue'
 
 const status = ref('')
 
@@ -16,20 +15,18 @@ const form = reactive({
   name: ''
 })
 
-const dbService = new DBService()
-
-async function add() {
-  try {
-    const exercise = new Exercise(form.name, form.description, form.link)
-    const id = await dbService.addExercise(exercise)
-
-    status.value = `Exercise ${form.name} successfully added. Got id ${id}`
-
+function onAdd(event: { id?: number; error?: string }) {
+  if (typeof event.id !== 'undefined') {
     form.name = ''
     form.description = ''
     form.link = ''
-  } catch (error) {
-    status.value = `Failed to add ${form.name}: ${error}`
+
+    status.value = `Exercise ${form.name} successfully added.
+     Got id ${event.id}`
+  }
+
+  if (typeof event.error !== 'undefined') {
+    status.value = `Failed to add ${form.name}: ${event.error}`
   }
 }
 
@@ -56,27 +53,30 @@ function validateLink(rule: any, value: string, callback: any) {
     'i'
   ) // validate fragment locator
 
-  if (!urlPattern.test(value)) {
+  if (!(value === '' || urlPattern.test(value))) {
     return callback(new Error('Please input correct url'))
   } else {
     return callback()
   }
 }
 
-const isPropValid = {
+const isPropValid = reactive({
   name: true,
   link: true
-}
+})
 
 function onValidate(prop: FormItemProp, isValid: boolean) {
   isPropValid[prop as keyof typeof isPropValid] = isValid
 }
+
+const formRef = ref<FormInstance>()
 </script>
 
 <template>
   <el-form
     label-position="top"
     :model="form"
+    ref="formRef"
     :rules="rules"
     @validate="onValidate"
   >
@@ -88,7 +88,11 @@ function onValidate(prop: FormItemProp, isValid: boolean) {
 
     <ExerciseLinkInput v-model="form.link" :is-link-valid="isPropValid.link" />
 
-    <button @click="add">Add Exercise</button>
+    <ExerciseSubmitButton
+      :form="form"
+      :validate="formRef?.validate"
+      @add="onAdd"
+    />
 
     <p>{{ status }}</p>
   </el-form>
