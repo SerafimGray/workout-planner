@@ -11,7 +11,15 @@ const props = defineProps<{
     | undefined
 }>()
 
-const dbService = new DBService()
+function add() {
+  try {
+    if (props.validate) {
+      props.validate(validationCallback)
+    }
+  } catch (error) {
+    emit('add', { error })
+  }
+}
 
 async function validationCallback(valid: boolean) {
   if (valid) {
@@ -27,15 +35,7 @@ async function validationCallback(valid: boolean) {
   }
 }
 
-function add() {
-  try {
-    if (props.validate) {
-      props.validate(validationCallback)
-    }
-  } catch (error) {
-    emit('add', { error })
-  }
-}
+const dbService = new DBService()
 
 const emit = defineEmits(['add'])
 </script>

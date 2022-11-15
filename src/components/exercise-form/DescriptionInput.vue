@@ -1,10 +1,9 @@
 <script lang="ts" setup>
 import { computed } from 'vue'
+
 const props = defineProps<{
   modelValue: string
 }>()
-
-const emit = defineEmits<{ (e: 'update:modelValue', value: string): void }>()
 
 const description = computed({
   get() {
@@ -14,6 +13,8 @@ const description = computed({
     emit('update:modelValue', value)
   }
 })
+
+const emit = defineEmits<{ (e: 'update:modelValue', value: string): void }>()
 </script>
 
 <template>

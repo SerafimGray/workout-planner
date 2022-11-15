@@ -7,14 +7,7 @@ import LinkInput from '@/components/exercise-form/LinkInput.vue'
 import NameInput from '@/components/exercise-form/NameInput.vue'
 import SubmitButton from '@/components/exercise-form/SubmitButton.vue'
 
-const status = ref('')
-
-const form = reactive({
-  description: '',
-  link: '',
-  name: ''
-})
-
+//onAdd
 function onAdd(event: { id?: number; error?: string }) {
   if (typeof event.id !== 'undefined') {
     form.name = ''
@@ -30,6 +23,15 @@ function onAdd(event: { id?: number; error?: string }) {
   }
 }
 
+const form = reactive({
+  description: '',
+  link: '',
+  name: ''
+})
+
+const status = ref('')
+
+//rules
 const rules = reactive<FormRules>({
   name: [
     {
@@ -60,15 +62,17 @@ function validateLink(_: unknown, value: string, callback: any) {
   }
 }
 
+//onValidate
+function onValidate(prop: FormItemProp, isValid: boolean) {
+  isPropValid[prop as keyof typeof isPropValid] = isValid
+}
+
 const isPropValid = reactive({
   name: true,
   link: true
 })
 
-function onValidate(prop: FormItemProp, isValid: boolean) {
-  isPropValid[prop as keyof typeof isPropValid] = isValid
-}
-
+//formRef
 const formRef = ref<FormInstance>()
 </script>
 
