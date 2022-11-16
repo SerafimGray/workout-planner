@@ -1,26 +1,13 @@
 <script lang="ts" setup>
-import { computed } from 'vue'
+import { useExerciseFormStore } from '@/stores/exerciseForm'
 
-const props = defineProps<{
-  modelValue: string
-}>()
-
-const description = computed({
-  get() {
-    return props.modelValue
-  },
-  set(value) {
-    emit('update:modelValue', value)
-  }
-})
-
-const emit = defineEmits<{ (e: 'update:modelValue', value: string): void }>()
+const exerciseFormStore = useExerciseFormStore()
 </script>
 
 <template>
   <el-form-item label="Description:" prop="description">
     <el-input
-      v-model="description"
+      v-model="exerciseFormStore.form.description"
       :autosize="{ minRows: 2 }"
       placeholder="Enter exercise description"
       type="textarea"

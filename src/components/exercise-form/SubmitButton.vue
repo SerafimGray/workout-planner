@@ -1,47 +1,25 @@
 <script lang="ts" setup>
 import type { FormValidateCallback, FormValidationResult } from 'element-plus'
 
-import { Exercise } from '@/entities/exercise/exercise'
-import { DBService } from '@/services/db/db'
+import { useExerciseFormStore } from '@/stores/exerciseForm'
+
+const exerciseFormStore = useExerciseFormStore()
 
 const props = defineProps<{
-  form: { description: string; name: string; link: string }
   validate:
     | ((callback?: FormValidateCallback | undefined) => FormValidationResult)
     | undefined
 }>()
 
 function add() {
-  try {
-    if (props.validate) {
-      props.validate(validationCallback)
-    }
-  } catch (error) {
-    emit('add', { error })
+  if (props.validate) {
+    props.validate(exerciseFormStore.validationCallback)
   }
 }
-
-async function validationCallback(valid: boolean) {
-  if (valid) {
-    const exercise = new Exercise(
-      props.form.name,
-      props.form.description,
-      props.form.link
-    )
-    const id = await dbService.addExercise(exercise)
-    emit('add', { id })
-  } else {
-    return false
-  }
-}
-
-const dbService = new DBService()
-
-const emit = defineEmits(['add'])
 </script>
 
 <template>
   <el-form-item>
-    <el-button type="primary" @click="add"> Add Exercise </el-button>
+    <el-button type="primary" @click="add">Add Exercise</el-button>
   </el-form-item>
 </template>

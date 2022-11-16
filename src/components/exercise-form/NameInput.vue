@@ -1,19 +1,19 @@
 <script lang="ts" setup>
-const props = defineProps<{
-  isNameValid: boolean
-  modelValue: string
-}>()
+import { useExerciseFormStore } from '@/stores/exerciseForm'
+
+const exerciseFormStore = useExerciseFormStore()
+
+const { form, isPropValid } = exerciseFormStore
 </script>
 
 <template>
   <el-form-item label="Name:" prop="name">
     <el-input
+      v-model="form.name"
       aria-describedby="exercise-name-alert"
-      :aria-invalid="!props.isNameValid"
+      :aria-invalid="!isPropValid.name"
       clearable
-      :model-value="props.modelValue"
       placeholder="Enter exercise name"
-      @input="$emit('update:modelValue', $event)"
     />
 
     <template #error="validateMessage">

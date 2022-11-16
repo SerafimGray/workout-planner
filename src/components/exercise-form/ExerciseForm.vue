@@ -6,30 +6,12 @@ import DescriptionInput from '@/components/exercise-form/DescriptionInput.vue'
 import LinkInput from '@/components/exercise-form/LinkInput.vue'
 import NameInput from '@/components/exercise-form/NameInput.vue'
 import SubmitButton from '@/components/exercise-form/SubmitButton.vue'
+import { useExerciseFormStore } from '@/stores/exerciseForm'
 
-//onAdd
-function onAdd(event: { id?: number; error?: string }) {
-  if (typeof event.id !== 'undefined') {
-    form.name = ''
-    form.description = ''
-    form.link = ''
+const exerciseFormStore = useExerciseFormStore()
 
-    status.value = `Exercise ${form.name} successfully added.
-     Got id ${event.id}`
-  }
-
-  if (typeof event.error !== 'undefined') {
-    status.value = `Failed to add ${form.name}: ${event.error}`
-  }
-}
-
-const form = reactive({
-  description: '',
-  link: '',
-  name: ''
-})
-
-const status = ref('')
+const { form } = exerciseFormStore
+const formRef = ref<FormInstance>()
 
 //rules
 const rules = reactive<FormRules>({
@@ -64,16 +46,9 @@ function validateLink(_: unknown, value: string, callback: any) {
 
 //onValidate
 function onValidate(prop: FormItemProp, isValid: boolean) {
+  const { isPropValid } = exerciseFormStore
   isPropValid[prop as keyof typeof isPropValid] = isValid
 }
-
-const isPropValid = reactive({
-  name: true,
-  link: true
-})
-
-//formRef
-const formRef = ref<FormInstance>()
 </script>
 
 <template>
@@ -86,14 +61,14 @@ const formRef = ref<FormInstance>()
   >
     <legend>Add new exercise</legend>
 
-    <NameInput v-model="form.name" :is-name-valid="isPropValid.name" />
+    <NameInput />
 
-    <DescriptionInput v-model="form.description" />
+    <DescriptionInput />
 
-    <LinkInput v-model="form.link" :is-link-valid="isPropValid.link" />
+    <LinkInput />
 
-    <SubmitButton :form="form" :validate="formRef?.validate" @add="onAdd" />
+    <SubmitButton :validate="formRef?.validate" />
 
-    <p>{{ status }}</p>
+    <p>{{ form.status }}</p>
   </el-form>
 </template>

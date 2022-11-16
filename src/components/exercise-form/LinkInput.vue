@@ -1,20 +1,20 @@
 <script lang="ts" setup>
-const props = defineProps<{
-  isLinkValid: boolean
-  modelValue: string
-}>()
+import { useExerciseFormStore } from '@/stores/exerciseForm'
+
+const exerciseFormStore = useExerciseFormStore()
+
+const { form, isPropValid } = exerciseFormStore
 </script>
 
 <template>
   <el-form-item label="Link:" prop="link">
     <el-input
+      v-model="form.link"
       aria-describedby="exercise-link-alert"
-      :aria-invalid="!props.isLinkValid"
+      :aria-invalid="!isPropValid.link"
       clearable
-      :model-value="props.modelValue"
       placeholder="Enter exercise link"
       type="url"
-      @input="$emit('update:modelValue', $event)"
     />
 
     <template #error="validateMessage">
