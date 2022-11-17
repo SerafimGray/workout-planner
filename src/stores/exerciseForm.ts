@@ -1,4 +1,5 @@
 import type { IndexableType } from 'dexie'
+import type { FormValidateCallback, FormValidationResult } from 'element-plus'
 import { defineStore } from 'pinia'
 import { reactive } from 'vue'
 
@@ -17,6 +18,23 @@ export const useExerciseFormStore = defineStore('exerciseForm', () => {
     name: true,
     link: true
   })
+
+  type Validate =
+    | ((callback?: FormValidateCallback | undefined) => FormValidationResult)
+    | undefined
+    | null
+
+  let validate: Validate = null
+
+  function setValidate(value: Validate) {
+    validate = value
+  }
+
+  function add() {
+    if (validate) {
+      validate(validationCallback)
+    }
+  }
 
   function validationCallback(valid: boolean) {
     if (valid) {
@@ -46,5 +64,5 @@ export const useExerciseFormStore = defineStore('exerciseForm', () => {
     form.link = ''
   }
 
-  return { form, isPropValid, validationCallback }
+  return { form, isPropValid, setValidate, add }
 })

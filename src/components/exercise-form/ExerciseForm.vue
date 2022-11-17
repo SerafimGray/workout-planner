@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { FormInstance, FormItemProp, FormRules } from 'element-plus'
-import { reactive, ref } from 'vue'
+import { reactive, ref, watch } from 'vue'
 
 import DescriptionInput from '@/components/exercise-form/DescriptionInput.vue'
 import LinkInput from '@/components/exercise-form/LinkInput.vue'
@@ -49,6 +49,14 @@ function onValidate(prop: FormItemProp, isValid: boolean) {
   const { isPropValid } = exerciseFormStore
   isPropValid[prop as keyof typeof isPropValid] = isValid
 }
+
+//validate
+watch(
+  () => formRef?.value?.validate,
+  validate => {
+    exerciseFormStore.setValidate(validate)
+  }
+)
 </script>
 
 <template>
@@ -67,7 +75,7 @@ function onValidate(prop: FormItemProp, isValid: boolean) {
 
     <LinkInput />
 
-    <SubmitButton :validate="formRef?.validate" />
+    <SubmitButton />
 
     <p>{{ form.status }}</p>
   </el-form>
