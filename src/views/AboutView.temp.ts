@@ -1,4 +1,4 @@
-import userEvent from '@testing-library/user-event'
+/*import userEvent from '@testing-library/user-event'
 import { render, screen } from '@testing-library/vue'
 import { createPinia, setActivePinia } from 'pinia'
 
@@ -20,4 +20,4 @@ describe('AboutView.vue', () => {
     await userEvent.click(screen.getByRole('button'))
     expect(screen.getByRole('button')).toHaveTextContent('count is 1')
   })
-})
+})*/
