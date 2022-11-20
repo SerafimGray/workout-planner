@@ -7,17 +7,12 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
-    DescriptionInput: typeof import('./src/components/exercise-form/DescriptionInput.vue')['default']
+    DescriptionInput: typeof import('./src/components/exercise-form/description-input/DescriptionInput.vue')['default']
     ElButton: typeof import('element-plus/es')['ElButton']
     ElForm: typeof import('element-plus/es')['ElForm']
     ElFormItem: typeof import('element-plus/es')['ElFormItem']
     ElInput: typeof import('element-plus/es')['ElInput']
-    ExerciseAdder: typeof import('./src/components/exercise-form/ExerciseAdder.vue')['default']
-    ExerciseDescriptionInput: typeof import('./src/components/exercise-form/ExerciseDescriptionInput.vue')['default']
     ExerciseForm: typeof import('./src/components/exercise-form/ExerciseForm.vue')['default']
-    ExerciseLinkInput: typeof import('./src/components/exercise-form/ExerciseLinkInput.vue')['default']
-    ExerciseNameInput: typeof import('./src/components/exercise-form/ExerciseNameInput.vue')['default']
-    ExerciseSubmitButton: typeof import('./src/components/exercise-form/ExerciseSubmitButton.vue')['default']
     HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
     LinkInput: typeof import('./src/components/exercise-form/LinkInput.vue')['default']
     NameInput: typeof import('./src/components/exercise-form/NameInput.vue')['default']
