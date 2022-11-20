@@ -1,15 +1,15 @@
 import { createTestingPinia } from '@pinia/testing'
 import { mount, VueWrapper } from '@vue/test-utils'
 import ElementPlus, { ElInput } from 'element-plus'
+import { Store } from 'pinia'
 import { beforeEach, describe, expect, it } from 'vitest'
 
 import DescriptionInput from '@/components/exercise-form/description-input/DescriptionInput.vue'
 import { useExerciseFormStore } from '@/stores/exercise-form/exerciseForm'
-import type { IExerciseForm } from '@/stores/exercise-form/exerciseForm.types'
 
 describe('DescriptionInput', () => {
   let wrapper: VueWrapper
-  let store: IExerciseForm
+  let store: Store
   const initialState = {
     exerciseForm: {
       form: {
@@ -34,9 +34,9 @@ describe('DescriptionInput', () => {
   })
 
   describe('store', () => {
-    it('should display store value', () => {
+    it('should display store value', async () => {
+      await store.$patch({ form: { description: 'fakeDescription' } })
       const modelValue = wrapper.getComponent(ElInput).props('modelValue')
-      store.form.description = 'fakeDescription'
       expect(modelValue).toBe('fakeDescription')
     })
 

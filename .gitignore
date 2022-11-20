@@ -28,7 +28,7 @@ tests/e2e/videos
 coverage
 
 # Auto generated files
-package-lock.json
-yarn.lock
-auto-imports.d.ts
-components.d.ts
+/package-lock.json
+/yarn.lock
+/auto-imports.d.ts
+/components.d.ts
