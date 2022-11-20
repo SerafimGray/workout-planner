@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { useExerciseFormStore } from '@/stores/exerciseForm'
+import { useExerciseFormStore } from '@/stores/exercise-form/exerciseForm'
 
 const exerciseFormStore = useExerciseFormStore()
 </script>

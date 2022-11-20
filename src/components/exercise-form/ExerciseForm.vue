@@ -2,11 +2,11 @@
 import type { FormInstance, FormItemProp, FormRules } from 'element-plus'
 import { reactive, ref, watch } from 'vue'
 
-import DescriptionInput from '@/components/exercise-form/DescriptionInput.vue'
+import DescriptionInput from '@/components/exercise-form/description-input/DescriptionInput.vue'
 import LinkInput from '@/components/exercise-form/LinkInput.vue'
 import NameInput from '@/components/exercise-form/NameInput.vue'
 import SubmitButton from '@/components/exercise-form/SubmitButton.vue'
-import { useExerciseFormStore } from '@/stores/exerciseForm'
+import { useExerciseFormStore } from '@/stores/exercise-form/exerciseForm'
 
 const exerciseFormStore = useExerciseFormStore()
 

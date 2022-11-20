@@ -3,17 +3,25 @@ import { mount, VueWrapper } from '@vue/test-utils'
 import ElementPlus, { ElInput } from 'element-plus'
 import { beforeEach, describe, expect, it } from 'vitest'
 
-import DescriptionInput from '@/components/exercise-form/DescriptionInput.vue'
-import { useExerciseFormStore } from '@/stores/exerciseForm'
+import DescriptionInput from '@/components/exercise-form/description-input/DescriptionInput.vue'
+import { useExerciseFormStore } from '@/stores/exercise-form/exerciseForm'
+import type { IExerciseForm } from '@/stores/exercise-form/exerciseForm.types'
 
 describe('DescriptionInput', () => {
   let wrapper: VueWrapper
-  let store: { form: { description: string } }
+  let store: IExerciseForm
+  const initialState = {
+    exerciseForm: {
+      form: {
+        description: ''
+      }
+    }
+  }
 
   beforeEach(() => {
     wrapper = mount(DescriptionInput, {
       global: {
-        plugins: [createTestingPinia(), ElementPlus]
+        plugins: [createTestingPinia({ initialState }), ElementPlus]
       }
     })
 

@@ -70,7 +70,10 @@ module.exports = {
       }
     ],
     '@typescript-eslint/no-unused-vars': 'error',
-    'max-len': ['error', { code: 80, ignoreRegExpLiterals: true }],
+    'max-len': [
+      'error',
+      { code: 80, ignoreRegExpLiterals: true, ignorePattern: '^import .*' }
+    ],
     'array-bracket-newline': ['error', { multiline: true }]
   },
   overrides: [
