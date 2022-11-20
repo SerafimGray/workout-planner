@@ -1,7 +1,6 @@
 import { createTestingPinia } from '@pinia/testing'
-import { mount, VueWrapper } from '@vue/test-utils'
-import ElementPlus, { ElInput } from 'element-plus'
-import { Store } from 'pinia'
+import { mount, VueWrapper, DOMWrapper } from '@vue/test-utils'
+import ElementPlus from 'element-plus'
 import { beforeEach, describe, expect, it } from 'vitest'
 
 import DescriptionInput from '@/components/exercise-form/description-input/DescriptionInput.vue'
@@ -9,7 +8,7 @@ import { useExerciseFormStore } from '@/stores/exercise-form/exerciseForm'
 
 describe('DescriptionInput', () => {
   let wrapper: VueWrapper
-  let store: Store
+  let store: any
   const initialState = {
     exerciseForm: {
       form: {
@@ -34,13 +33,23 @@ describe('DescriptionInput', () => {
   })
 
   describe('store', () => {
-    it('should display store value', async () => {
-      await store.$patch({ form: { description: 'fakeDescription' } })
-      const modelValue = wrapper.getComponent(ElInput).props('modelValue')
-      expect(modelValue).toBe('fakeDescription')
+    let textarea: DOMWrapper<HTMLTextAreaElement>
+    const fakeDescription = 'fakeDescription'
+
+    beforeEach(() => {
+      textarea = wrapper.find('textarea')
     })
 
-    it.todo('should change store value on input')
+    it('should display store value', async () => {
+      await store.$patch({ form: { description: fakeDescription } })
+      expect(textarea.element.value).toBe(fakeDescription)
+    })
+
+    it('should change store value on input', async () => {
+      await textarea.setValue(fakeDescription)
+      expect(store.form.description).toBe(fakeDescription)
+    })
+
     it.todo('should change display value on store change')
   })
 
