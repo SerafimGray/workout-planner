@@ -26,3 +26,9 @@ dist-ssr
 tests/e2e/screenshots
 tests/e2e/videos
 coverage
+
+# Auto generated files
+package-lock.json
+yarn.lock
+auto-imports.d.ts
+components.d.ts
