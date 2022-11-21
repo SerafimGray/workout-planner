@@ -16,6 +16,7 @@ describe('DescriptionInput', () => {
       }
     }
   }
+  let textarea: DOMWrapper<HTMLTextAreaElement>
 
   beforeEach(() => {
     wrapper = mount(DescriptionInput, {
@@ -25,20 +26,16 @@ describe('DescriptionInput', () => {
     })
 
     store = useExerciseFormStore()
+
+    textarea = wrapper.find('textarea')
   })
 
   it('should render textarea', () => {
-    const textarea = wrapper.find('textarea')
     expect(textarea.exists()).toBe(true)
   })
 
   describe('store', () => {
-    let textarea: DOMWrapper<HTMLTextAreaElement>
     const fakeDescription = 'fakeDescription'
-
-    beforeEach(() => {
-      textarea = wrapper.find('textarea')
-    })
 
     it('should display store value', async () => {
       await store.$patch({ form: { description: fakeDescription } })
@@ -49,12 +46,5 @@ describe('DescriptionInput', () => {
       await textarea.setValue(fakeDescription)
       expect(store.form.description).toBe(fakeDescription)
     })
-
-    it.todo('should change display value on store change')
-  })
-
-  describe('autosize', () => {
-    it.todo('should be equal in height to minRows')
-    it.todo('should change height on multiline input')
   })
 })
