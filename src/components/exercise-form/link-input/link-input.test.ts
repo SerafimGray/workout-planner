@@ -11,6 +11,9 @@ describe('LinkInput', () => {
     exerciseForm: {
       form: {
         link: ''
+      },
+      isPropValid: {
+        link: true
       }
     }
   }
@@ -50,5 +53,14 @@ describe('LinkInput', () => {
   it('should change input value on store change', async () => {
     await store.$patch({ form: { link: fakeLink } })
     expect(input.element.value).toBe(fakeLink)
+  })
+
+  it('should display aria-invalid with store value', () => {
+    expect(wrapper.find('[aria-invalid="false"]').exists())
+  })
+
+  it('should change aria-invalid on store change', async () => {
+    await store.$patch({ isPropValid: { link: false } })
+    expect(wrapper.find('[aria-invalid="true"]').exists())
   })
 })
