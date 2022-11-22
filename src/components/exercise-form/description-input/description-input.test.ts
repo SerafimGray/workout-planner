@@ -18,6 +18,7 @@ describe('DescriptionInput', () => {
   }
   let textarea: DOMWrapper<HTMLTextAreaElement>
   const fakeDescription = 'fakeDescription'
+  const label = 'fakeLabel'
 
   beforeEach(() => {
     wrapper = mount(DescriptionInput, {
@@ -29,6 +30,11 @@ describe('DescriptionInput', () => {
     store = useExerciseFormStore()
 
     textarea = wrapper.find('textarea')
+  })
+
+  it('should display label text', async () => {
+    await wrapper.setProps({ label })
+    expect(wrapper.html()).toContain(label)
   })
 
   it('should render textarea', () => {

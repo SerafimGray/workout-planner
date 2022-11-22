@@ -2,10 +2,17 @@
 import { useExerciseFormStore } from '@/stores/exercise-form/exerciseForm'
 
 const exerciseFormStore = useExerciseFormStore()
+
+const props = defineProps({
+  label: {
+    type: String,
+    default: 'Description:'
+  }
+})
 </script>
 
 <template>
-  <el-form-item label="Description:" prop="description">
+  <el-form-item :label="props.label" prop="description">
     <el-input
       v-model="exerciseFormStore.form.description"
       :autosize="{ minRows: 2 }"
