@@ -17,6 +17,7 @@ describe('DescriptionInput', () => {
     }
   }
   let textarea: DOMWrapper<HTMLTextAreaElement>
+  const fakeDescription = 'fakeDescription'
 
   beforeEach(() => {
     wrapper = mount(DescriptionInput, {
@@ -34,17 +35,13 @@ describe('DescriptionInput', () => {
     expect(textarea.exists()).toBe(true)
   })
 
-  describe('store', () => {
-    const fakeDescription = 'fakeDescription'
+  it('should display store value', async () => {
+    await store.$patch({ form: { description: fakeDescription } })
+    expect(textarea.element.value).toBe(fakeDescription)
+  })
 
-    it('should display store value', async () => {
-      await store.$patch({ form: { description: fakeDescription } })
-      expect(textarea.element.value).toBe(fakeDescription)
-    })
-
-    it('should change store value on input', async () => {
-      await textarea.setValue(fakeDescription)
-      expect(store.form.description).toBe(fakeDescription)
-    })
+  it('should change store value on input', async () => {
+    await textarea.setValue(fakeDescription)
+    expect(store.form.description).toBe(fakeDescription)
   })
 })
