@@ -1,16 +1,19 @@
 <script lang="ts" setup>
-import { ref } from 'vue'
-
 import { useExerciseFormStore } from '@/stores/exercise-form/exerciseForm'
 
-const label = ref('Link:')
+const props = defineProps({
+  label: {
+    type: String,
+    default: 'Link:'
+  }
+})
 
 const exerciseFormStore = useExerciseFormStore()
 const { form, isPropValid } = exerciseFormStore
 </script>
 
 <template>
-  <el-form-item :label="label" prop="link">
+  <el-form-item :label="props.label" prop="link">
     <el-input
       v-model="form.link"
       aria-describedby="exercise-link-alert"

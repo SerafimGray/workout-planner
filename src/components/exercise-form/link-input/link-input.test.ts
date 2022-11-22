@@ -6,7 +6,7 @@ import { describe, expect, it } from 'vitest'
 import LinkInput from '@/components/exercise-form/link-input/LinkInput.vue'
 
 describe('LinkInput', () => {
-  it('should display label', () => {
+  it('should display label text', async () => {
     const initialState = {
       exerciseForm: {
         form: {
@@ -15,17 +15,14 @@ describe('LinkInput', () => {
       }
     }
     const wrapper = mount(LinkInput, {
-      data() {
-        return {
-          label: 'hi'
-        }
-      },
       global: {
         plugins: [createTestingPinia({ initialState }), ElementPlus]
       }
     })
+    const label = 'fakeLabel'
 
-    console.log(wrapper.html())
-    expect(wrapper.find('label').text()).toBe('hi')
+    await wrapper.setProps({ label })
+
+    expect(wrapper.html()).toContain(label)
   })
 })
