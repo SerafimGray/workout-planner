@@ -17,6 +17,6 @@ declare module '@vue/runtime-core' {
     NameInput: typeof import('./src/components/exercise-form/name-input/NameInput.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
-    SubmitButton: typeof import('./src/components/exercise-form/SubmitButton.vue')['default']
+    SubmitButton: typeof import('./src/components/exercise-form/submit-button/SubmitButton.vue')['default']
   }
 }
