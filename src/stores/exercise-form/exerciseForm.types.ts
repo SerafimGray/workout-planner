@@ -1,4 +1,5 @@
 import type { FormValidateCallback, FormValidationResult } from 'element-plus'
+import { Ref } from 'vue'
 
 export type Validate =
   | ((callback?: FormValidateCallback | undefined) => FormValidationResult)
@@ -6,6 +7,8 @@ export type Validate =
   | null
 
 export interface IExerciseForm {
+  loading: Ref<boolean>
+
   form: {
     description: string
     link: string

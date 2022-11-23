@@ -1,6 +1,6 @@
 import type { IndexableType } from 'dexie'
 import { defineStore } from 'pinia'
-import { reactive } from 'vue'
+import { reactive, ref } from 'vue'
 
 import { Exercise } from '@/entities/exercise/exercise'
 import { DBService } from '@/services/db/db'
@@ -12,6 +12,8 @@ import type {
 export const useExerciseFormStore = defineStore(
   'exerciseForm',
   (): IExerciseForm => {
+    const loading = ref(false)
+
     const form = reactive({
       description: '',
       link: '',
@@ -31,7 +33,7 @@ export const useExerciseFormStore = defineStore(
     }
 
     function add() {
-      if (validate) {
+      if (validate && !loading.value) {
         validate(validationCallback)
       }
     }
@@ -47,13 +49,16 @@ export const useExerciseFormStore = defineStore(
     async function addExercise() {
       const { description, link, name } = form
       const exercise = new Exercise(name, description, link)
-      const id = await dbService.addExercise(exercise)
+      loading.value = true
 
       try {
+        const id = await dbService.addExercise(exercise)
         updateForm(id)
       } catch (error: unknown) {
         form.status = `Failed to add ${form.name}: ${error}`
       }
+
+      loading.value = false
     }
 
     const dbService = new DBService()
@@ -65,6 +70,6 @@ export const useExerciseFormStore = defineStore(
       form.link = ''
     }
 
-    return { form, isPropValid, setValidate, add }
+    return { form, isPropValid, loading, setValidate, add }
   }
 )
