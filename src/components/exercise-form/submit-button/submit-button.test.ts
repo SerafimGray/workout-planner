@@ -37,6 +37,7 @@ describe('SubmitButton', () => {
   })
 
   it('should be disabled if loading', async () => {
-    await store.$patch({ form: { name: fakeName } })
+    await store.$patch({ loading: true })
+    expect(wrapper.find('[aria-disabled="true"]').exists())
   })
 })
