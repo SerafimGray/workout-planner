@@ -3,22 +3,22 @@ import { mount } from '@vue/test-utils'
 import ElementPlus from 'element-plus'
 import { describe, expect, it } from 'vitest'
 
-import LinkInput from '@/components/exercise-form/link-input/LinkInput.vue'
+import NameInput from '@/components/exercise-form/name-input/NameInput.vue'
 import { useExerciseFormStore } from '@/stores/exercise-form/exerciseForm'
 
 describe('LinkInput', () => {
   const initialState = {
     exerciseForm: {
       form: {
-        link: ''
+        name: ''
       },
       isPropValid: {
-        link: true
+        name: true
       }
     }
   }
 
-  const wrapper = mount(LinkInput, {
+  const wrapper = mount(NameInput, {
     global: {
       plugins: [createTestingPinia({ initialState }), ElementPlus]
     }
@@ -27,7 +27,7 @@ describe('LinkInput', () => {
   const store = useExerciseFormStore()
   const input = wrapper.find('input')
   const label = 'fakeLabel'
-  const fakeLink = 'fakeLink'
+  const fakeName = 'fakeName'
 
   it('should display label text', async () => {
     await wrapper.setProps({ label })
@@ -39,13 +39,13 @@ describe('LinkInput', () => {
   })
 
   it('should change store value on input', async () => {
-    await input.setValue(fakeLink)
-    expect(store.form.link).toBe(fakeLink)
+    await input.setValue(fakeName)
+    expect(store.form.name).toBe(fakeName)
   })
 
   it('should change input value on store change', async () => {
-    await store.$patch({ form: { link: fakeLink } })
-    expect(input.element.value).toBe(fakeLink)
+    await store.$patch({ form: { name: fakeName } })
+    expect(input.element.value).toBe(fakeName)
   })
 
   it('should display aria-invalid with store value', () => {
@@ -53,7 +53,7 @@ describe('LinkInput', () => {
   })
 
   it('should change aria-invalid on store change', async () => {
-    await store.$patch({ isPropValid: { link: false } })
+    await store.$patch({ isPropValid: { name: false } })
     expect(wrapper.find('[aria-invalid="true"]').exists())
   })
 })
