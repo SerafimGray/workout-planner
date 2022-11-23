@@ -1,14 +1,12 @@
 import { createTestingPinia } from '@pinia/testing'
-import { mount, VueWrapper, DOMWrapper } from '@vue/test-utils'
+import { mount } from '@vue/test-utils'
 import ElementPlus from 'element-plus'
-import { beforeEach, describe, expect, it } from 'vitest'
+import { describe, expect, it } from 'vitest'
 
 import DescriptionInput from '@/components/exercise-form/description-input/DescriptionInput.vue'
 import { useExerciseFormStore } from '@/stores/exercise-form/exerciseForm'
 
 describe('DescriptionInput', () => {
-  let wrapper: VueWrapper
-  let store: any
   const initialState = {
     exerciseForm: {
       form: {
@@ -16,21 +14,17 @@ describe('DescriptionInput', () => {
       }
     }
   }
-  let textarea: DOMWrapper<HTMLTextAreaElement>
+
+  const wrapper = mount(DescriptionInput, {
+    global: {
+      plugins: [createTestingPinia({ initialState }), ElementPlus]
+    }
+  })
+
+  const store = useExerciseFormStore()
+  const textarea = wrapper.find('textarea')
   const fakeDescription = 'fakeDescription'
   const label = 'fakeLabel'
-
-  beforeEach(() => {
-    wrapper = mount(DescriptionInput, {
-      global: {
-        plugins: [createTestingPinia({ initialState }), ElementPlus]
-      }
-    })
-
-    store = useExerciseFormStore()
-
-    textarea = wrapper.find('textarea')
-  })
 
   it('should display label text', async () => {
     await wrapper.setProps({ label })

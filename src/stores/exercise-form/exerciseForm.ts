@@ -38,18 +38,18 @@ export const useExerciseFormStore = defineStore(
 
     function validationCallback(valid: boolean) {
       if (valid) {
-        const { description, link, name } = form
-        const exercise = new Exercise(name, description, link)
-        addExercise(exercise)
-        return true
-      } else {
-        return false
+        addExercise()
       }
+
+      return !!valid
     }
 
-    async function addExercise(exercise: Exercise) {
+    async function addExercise() {
+      const { description, link, name } = form
+      const exercise = new Exercise(name, description, link)
+      const id = await dbService.addExercise(exercise)
+
       try {
-        const id = await dbService.addExercise(exercise)
         updateForm(id)
       } catch (error: unknown) {
         form.status = `Failed to add ${form.name}: ${error}`

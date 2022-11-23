@@ -1,7 +1,7 @@
 import { createTestingPinia } from '@pinia/testing'
-import { mount, VueWrapper, DOMWrapper } from '@vue/test-utils'
+import { mount } from '@vue/test-utils'
 import ElementPlus from 'element-plus'
-import { beforeEach, describe, expect, it } from 'vitest'
+import { describe, expect, it } from 'vitest'
 
 import LinkInput from '@/components/exercise-form/link-input/LinkInput.vue'
 import { useExerciseFormStore } from '@/stores/exercise-form/exerciseForm'
@@ -17,23 +17,17 @@ describe('LinkInput', () => {
       }
     }
   }
-  let wrapper: VueWrapper
-  const label = 'fakeLabel'
-  let input: DOMWrapper<HTMLInputElement>
-  const fakeLink = 'fakeLink'
-  let store: any
 
-  beforeEach(() => {
-    wrapper = mount(LinkInput, {
-      global: {
-        plugins: [createTestingPinia({ initialState }), ElementPlus]
-      }
-    })
-
-    store = useExerciseFormStore()
-
-    input = wrapper.find('input')
+  const wrapper = mount(LinkInput, {
+    global: {
+      plugins: [createTestingPinia({ initialState }), ElementPlus]
+    }
   })
+
+  const store = useExerciseFormStore()
+  const input = wrapper.find('input')
+  const label = 'fakeLabel'
+  const fakeLink = 'fakeLink'
 
   it('should display label text', async () => {
     await wrapper.setProps({ label })
