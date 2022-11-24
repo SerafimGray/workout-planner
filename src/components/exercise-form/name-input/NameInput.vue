@@ -18,6 +18,7 @@ const { form, isPropValid } = exerciseFormStore
       v-model="form.name"
       aria-describedby="exercise-name-alert"
       :aria-invalid="!isPropValid.name"
+      class="exercise-name-input"
       clearable
       placeholder="Enter exercise name"
     />
