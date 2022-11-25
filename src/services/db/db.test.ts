@@ -1,5 +1,4 @@
 import 'fake-indexeddb/auto'
-//import { IDBFactory,  } from 'fake-indexeddb'
 import { beforeEach, describe, expect, it } from 'vitest'
 
 import { DB } from '@/entities/db/db'
@@ -19,8 +18,7 @@ describe('DBService', () => {
 
   describe('addExercise', () => {
     beforeEach(() => {
-      //const indexedDB = new IDBFactory()
-      db = new DB(/*{ indexedDB, IDBKeyRange: IDBKeyRange }*/)
+      db = new DB()
       dbService = new DBService(db)
     })
 
@@ -33,8 +31,6 @@ describe('DBService', () => {
 
     it('should return exercise id', async () => {
       const id = await dbService.addExercise(exercise)
-      /*const exercises = await db.exercises.toArray()
-      console.log(exercises)*/
       expect(id).toBeTypeOf('number')
     })
   })
