@@ -1,6 +1,6 @@
 import { createTestingPinia } from '@pinia/testing'
 import { mount } from '@vue/test-utils'
-import ElementPlus, { ElForm } from 'element-plus'
+import ElementPlus from 'element-plus'
 import { describe, expect, it, vi } from 'vitest'
 
 import ExerciseForm from '@/components/exercise-form/ExerciseForm.vue'
@@ -10,9 +10,6 @@ describe('ExerciseForm', () => {
   const initialState = {
     exerciseForm: {
       setValidate: vi.fn(),
-      isPropValid: {
-        name: true
-      }
     }
   }
 
@@ -42,14 +39,5 @@ describe('ExerciseForm', () => {
 
   it('should set store validate value', () => {
     expect(store.setValidate).toBeCalled()
-  })
-
-  it('should set prop value on validate', async () => {
-    const formComponent = wrapper.findComponent(ElForm)
-    await formComponent.trigger('validate', {
-      prop: 'name',
-      isValid: false
-    })
-    expect(store.isPropValid.name).toBe(false)
   })
 })

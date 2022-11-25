@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { FormInstance, FormItemProp, FormRules } from 'element-plus'
+import type { FormInstance, FormRules } from 'element-plus'
 import { reactive, ref, watch } from 'vue'
 
 import DescriptionInput from '@/components/exercise-form/description-input/DescriptionInput.vue'
@@ -10,7 +10,7 @@ import { useExerciseFormStore } from '@/stores/exercise-form/exerciseForm'
 
 const exerciseFormStore = useExerciseFormStore()
 
-const { form } = exerciseFormStore
+const { form, onValidate } = exerciseFormStore
 const formRef = ref<FormInstance>()
 
 //rules
@@ -42,12 +42,6 @@ function validateLink(_: unknown, value: string, callback: any) {
   } else {
     return callback()
   }
-}
-
-//onValidate
-function onValidate(prop: FormItemProp, isValid: boolean) {
-  const { isPropValid } = exerciseFormStore
-  isPropValid[prop as keyof typeof isPropValid] = isValid
 }
 
 //validate

@@ -1,4 +1,5 @@
 import type { IndexableType } from 'dexie'
+import { FormItemProp } from 'element-plus'
 import { defineStore } from 'pinia'
 import { reactive, ref } from 'vue'
 
@@ -70,6 +71,10 @@ export const useExerciseFormStore = defineStore(
       form.link = ''
     }
 
-    return { form, isPropValid, loading, setValidate, add }
+    function onValidate(prop: FormItemProp, isValid: boolean) {
+      isPropValid[prop as keyof typeof isPropValid] = isValid
+    }
+
+    return { form, isPropValid, loading, setValidate, add, onValidate }
   }
 )

@@ -1,4 +1,8 @@
-import type { FormValidateCallback, FormValidationResult } from 'element-plus'
+import type {
+  FormValidateCallback,
+  FormValidationResult,
+  FormItemProp
+} from 'element-plus'
 import { Ref } from 'vue'
 
 export type Validate =
@@ -24,4 +28,6 @@ export interface IExerciseForm {
   setValidate(value: Validate): void
 
   add(): void
+
+  onValidate(prop: FormItemProp, isValid: boolean): void
 }
