@@ -39,4 +39,16 @@ describe('exerciseForm store', () => {
       expect(validate).toBeCalled()
     })
   })
+
+  describe('onValidate', () => {
+    it('should set prop value', () => {
+      const exerciseFormStore = useExerciseFormStore()
+      const isValid = false
+      const prop = 'name'
+
+      exerciseFormStore.onValidate(prop, isValid)
+
+      expect(exerciseFormStore.isPropValid[prop]).toBe(isValid)
+    })
+  })
 })
