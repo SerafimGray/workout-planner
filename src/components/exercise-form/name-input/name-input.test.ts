@@ -49,11 +49,11 @@ describe('LinkInput', () => {
   })
 
   it('should display aria-invalid with store value', () => {
-    expect(wrapper.find('[aria-invalid="false"]').exists())
+    expect(wrapper.find('[aria-invalid="false"]').exists()).toBe(true)
   })
 
   it('should change aria-invalid on store change', async () => {
     await store.$patch({ isPropValid: { name: false } })
-    expect(wrapper.find('[aria-invalid="true"]').exists())
+    expect(wrapper.find('[aria-invalid="true"]').exists()).toBe(true)
   })
 })

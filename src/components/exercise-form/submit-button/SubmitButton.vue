@@ -1,8 +1,11 @@
 <script lang="ts" setup>
+import { storeToRefs } from 'pinia'
+
 import { useExerciseFormStore } from '@/stores/exercise-form/exerciseForm'
 
 const exerciseFormStore = useExerciseFormStore()
-const { add, loading } = exerciseFormStore
+const { add } = exerciseFormStore
+const { loading } = storeToRefs(exerciseFormStore)
 </script>
 
 <template>

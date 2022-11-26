@@ -24,7 +24,7 @@ describe('SubmitButton', () => {
   const button = wrapper.find('button')
 
   it('should render button', () => {
-    expect(button.exists())
+    expect(button.exists()).toBe(true)
   })
 
   it('should run store add function on click', () => {
@@ -33,11 +33,11 @@ describe('SubmitButton', () => {
   })
 
   it('should be enabled by default', () => {
-    expect(wrapper.find('[aria-disabled="false"]').exists())
+    expect(button.attributes('aria-disabled')).toBe('false')
   })
 
   it('should be disabled if loading', async () => {
     await store.$patch({ loading: true })
-    expect(wrapper.find('[aria-disabled="true"]').exists())
+    expect(button.attributes('aria-disabled')).toBe('true')
   })
 })

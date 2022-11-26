@@ -9,7 +9,7 @@ import { useExerciseFormStore } from '@/stores/exercise-form/exerciseForm'
 describe('ExerciseForm', () => {
   const initialState = {
     exerciseForm: {
-      setValidate: vi.fn(),
+      setValidate: vi.fn()
     }
   }
 
@@ -26,14 +26,14 @@ describe('ExerciseForm', () => {
   })
 
   const store = useExerciseFormStore()
-  const form = wrapper.find('form')
-  const errorMessage = wrapper.find('.el-form-item__error')
 
   it('should render form', () => {
+    const form = wrapper.find('form')
     expect(form.exists()).toBe(true)
   })
 
   it('should not render error message by default', () => {
+    const errorMessage = wrapper.find('.el-form-item__error')
     expect(errorMessage.exists()).toBe(false)
   })
 
