@@ -1,8 +1,8 @@
 import Dexie, { DexieOptions, Table } from 'dexie'
 
-import { IExerciseTable } from '@/entities/db/db.types'
+import { IDB, IExerciseTable } from '@/entities/db/db.types'
 
-export class DB extends Dexie {
+export class DB extends Dexie implements IDB {
   exercises!: Table<IExerciseTable>
 
   constructor(options?: DexieOptions) {

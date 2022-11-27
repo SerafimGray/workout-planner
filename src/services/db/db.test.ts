@@ -2,12 +2,14 @@ import 'fake-indexeddb/auto'
 import { beforeEach, describe, expect, it } from 'vitest'
 
 import { DB } from '@/entities/db/db'
+import { IDB } from '@/entities/db/db.types'
 import { Exercise } from '@/entities/exercise/exercise'
 import { DBService } from '@/services/db/db'
+import { IDBService } from '@/services/db/db.types'
 
 describe('DBService', () => {
-  let db: DB
-  let dbService: DBService
+  let db: IDB
+  let dbService: IDBService
 
   const exerciseName = 'exerciseName'
   const exercise = new Exercise(
