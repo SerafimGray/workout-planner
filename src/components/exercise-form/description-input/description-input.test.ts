@@ -4,7 +4,7 @@ import ElementPlus from 'element-plus'
 import { describe, expect, it } from 'vitest'
 
 import DescriptionInput from '@/components/exercise-form/description-input/DescriptionInput.vue'
-import { useExerciseFormStore } from '@/stores/exercise-form/exerciseForm'
+import { useExerciseFormStore } from '@/stores/exercise-form/exercise-form'
 
 describe('DescriptionInput', () => {
   const initialState = {

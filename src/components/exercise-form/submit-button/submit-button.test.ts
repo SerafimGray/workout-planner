@@ -4,7 +4,7 @@ import ElementPlus from 'element-plus'
 import { describe, expect, it, vi } from 'vitest'
 
 import SubmitButton from '@/components/exercise-form/submit-button/SubmitButton.vue'
-import { useExerciseFormStore } from '@/stores/exercise-form/exerciseForm'
+import { useExerciseFormStore } from '@/stores/exercise-form/exercise-form'
 
 describe('SubmitButton', () => {
   const initialState = {

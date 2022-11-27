@@ -6,7 +6,7 @@ import DescriptionInput from '@/components/exercise-form/description-input/Descr
 import LinkInput from '@/components/exercise-form/link-input/LinkInput.vue'
 import NameInput from '@/components/exercise-form/name-input/NameInput.vue'
 import SubmitButton from '@/components/exercise-form/submit-button/SubmitButton.vue'
-import { useExerciseFormStore } from '@/stores/exercise-form/exerciseForm'
+import { useExerciseFormStore } from '@/stores/exercise-form/exercise-form'
 
 const exerciseFormStore = useExerciseFormStore()
 

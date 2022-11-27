@@ -8,7 +8,7 @@ import { DBService } from '@/services/db/db'
 import type {
   Validate,
   IExerciseForm
-} from '@/stores/exercise-form/exerciseForm.types'
+} from '@/stores/exercise-form/exercise-form.types'
 
 export const useExerciseFormStore = defineStore(
   'exerciseForm',

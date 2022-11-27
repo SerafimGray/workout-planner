@@ -1,7 +1,7 @@
 import { setActivePinia, createPinia } from 'pinia'
 import { describe, beforeEach, it, vi, expect } from 'vitest'
 
-import { useExerciseFormStore } from '@/stores/exercise-form/exerciseForm'
+import { useExerciseFormStore } from '@/stores/exercise-form/exercise-form'
 import 'fake-indexeddb/auto'
 
 describe('exerciseForm store', () => {

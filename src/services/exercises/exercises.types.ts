@@ -1,5 +1,7 @@
-import type { IExercise } from '@/entities/exercise/exercise.types'
+import { Ref } from 'vue'
+
+import { IExerciseTable } from '@/entities/db/db.types'
 
 export interface IExercisesService {
-  getAll(): Promise<IExercise[]>
+  getAll(): Readonly<Ref<IExerciseTable[] | undefined>>
 }

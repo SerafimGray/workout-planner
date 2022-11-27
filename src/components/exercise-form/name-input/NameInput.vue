@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { useExerciseFormStore } from '@/stores/exercise-form/exerciseForm'
+import { useExerciseFormStore } from '@/stores/exercise-form/exercise-form'
 
 const props = defineProps({
   name: {

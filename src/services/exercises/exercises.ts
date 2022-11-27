@@ -1,3 +1,7 @@
+import { useObservable } from '@vueuse/rxjs'
+import { liveQuery } from 'dexie'
+import { from } from 'rxjs'
+
 import { db } from '@/entities/db/db'
 import { IDB } from '@/entities/db/db.types'
 import { Exercise } from '@/entities/exercise/exercise'
@@ -11,9 +15,12 @@ export class ExercisesService implements IExercisesService {
     this.db = customDB || db
   }
 
-  async getAll() {
-    const rawExercises = await this.db.exercises.toArray()
-    return rawExercises.map(this.toExerciseEntity)
+  getAll() {
+    return useObservable(from(liveQuery(() => this.getExercises())))
+  }
+
+  private async getExercises() {
+    return (await this.db.exercises.toArray()).map(this.toExerciseEntity)
   }
 
   private toExerciseEntity(exercise: IExercise) {
