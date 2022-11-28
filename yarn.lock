@@ -87,7 +87,7 @@
     debug "^3.1.0"
     lodash.once "^4.1.1"
 
-"@element-plus/icons-vue@^2.0.6":
+"@element-plus/icons-vue@^2.0.10", "@element-plus/icons-vue@^2.0.6":
   version "2.0.10"
   resolved "https://registry.npmjs.org/@element-plus/icons-vue/-/icons-vue-2.0.10.tgz"
   integrity sha512-ygEZ1mwPjcPo/OulhzLE7mtDrQBWI8vZzEWSNB2W/RNCRjoQGwbaK4N8lV4rid7Ts4qvySU3njMN7YCiSlSaTQ==
@@ -649,10 +649,25 @@
   resolved "https://registry.npmjs.org/@vueuse/metadata/-/metadata-9.5.0.tgz"
   integrity sha512-4M1AyPZmIv41pym+K5+4wup3bKuYebbH8w8BROY1hmT7rIwcyS4tEL+UsGz0Hiu1FCOxcoBrwtAizc0YmBJjyQ==
 
+"@vueuse/rxjs@^9.6.0":
+  version "9.6.0"
+  resolved "https://registry.npmjs.org/@vueuse/rxjs/-/rxjs-9.6.0.tgz"
+  integrity sha512-GTSH4W0fPH1Hdu6nSStsdoAZcNYS0WdXudE9uorVEfDKZtQBFZ9ueTdEoALxMlQHeNvqTS4teNYXmac4PSpyRQ==
+  dependencies:
+    "@vueuse/shared" "9.6.0"
+    vue-demi "*"
+
 "@vueuse/shared@9.5.0":
   version "9.5.0"
   resolved "https://registry.npmjs.org/@vueuse/shared/-/shared-9.5.0.tgz"
   integrity sha512-HnnCWU1Vg9CVWRCcI8ohDKDRB2Sc4bTgT1XAIaoLSfVHHn+TKbrox6pd3klCSw4UDxkhDfOk8cAdcK+Z5KleCA==
+  dependencies:
+    vue-demi "*"
+
+"@vueuse/shared@9.6.0":
+  version "9.6.0"
+  resolved "https://registry.npmjs.org/@vueuse/shared/-/shared-9.6.0.tgz"
+  integrity sha512-/eDchxYYhkHnFyrb00t90UfjCx94kRHxc7J1GtBCqCG4HyPMX+krV9XJgVtWIsAMaxKVU4fC8NSUviG1JkwhUQ==
   dependencies:
     vue-demi "*"
 
@@ -3277,7 +3292,7 @@ run-parallel@^1.1.9:
   dependencies:
     queue-microtask "^1.2.2"
 
-rxjs@^7.5.1, rxjs@^7.5.5:
+rxjs@^7.5.1, rxjs@^7.5.5, rxjs@^7.5.7, rxjs@>=6.0.0:
   version "7.5.7"
   resolved "https://registry.npmjs.org/rxjs/-/rxjs-7.5.7.tgz"
   integrity sha512-z9MzKh/UcOqB3i20H6rtrlaE/CgjLOvheWK/9ILrbhROGTweAi1BaFsTT9FbwZi5Trr1qNRs+MXkhmR06awzQA==
@@ -3633,9 +3648,9 @@ tslib@^1.8.1:
   integrity sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==
 
 tslib@^2.1.0:
-  version "2.4.0"
-  resolved "https://registry.npmjs.org/tslib/-/tslib-2.4.0.tgz"
-  integrity sha512-d6xOpEDfsi2CZVlPQzGeux8XMwLT9hssAsaPYExaQMuYskwb+x1x7J371tWlbBdWHroy99KnVB6qIkUbs5X3UQ==
+  version "2.4.1"
+  resolved "https://registry.npmjs.org/tslib/-/tslib-2.4.1.tgz"
+  integrity sha512-tGyy4dAjRIEwI7BzsB0lynWgOpfqjUdq91XXAlIWD2OwKBH7oCl/GZG/HT4BOHrTlPMOASlMQ7veyTqpmRcrNA==
 
 tsutils@^3.21.0:
   version "3.21.0"

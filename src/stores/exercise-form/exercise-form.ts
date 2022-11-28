@@ -13,6 +13,8 @@ import type {
 export const useExerciseFormStore = defineStore(
   'exerciseForm',
   (): IExerciseForm => {
+    const isDialogVisible = ref(false)
+
     //form
     const form = reactive({
       description: '',
@@ -77,6 +79,14 @@ export const useExerciseFormStore = defineStore(
       return !!valid
     }
 
-    return { form, isPropValid, loading, add, onValidate, setValidate }
+    return {
+      form,
+      isDialogVisible,
+      isPropValid,
+      loading,
+      add,
+      onValidate,
+      setValidate
+    }
   }
 )

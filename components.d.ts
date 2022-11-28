@@ -8,6 +8,7 @@ export {}
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     DescriptionInput: typeof import('./src/components/exercise-form/description-input/DescriptionInput.vue')['default']
+    EditButton: typeof import('./src/components/exercise-list/edit-button/EditButton.vue')['default']
     ElButton: typeof import('element-plus/es')['ElButton']
     ElCard: typeof import('element-plus/es')['ElCard']
     ElForm: typeof import('element-plus/es')['ElForm']

@@ -11,6 +11,8 @@ export type Validate =
   | null
 
 export interface IExerciseForm {
+  isDialogVisible: Ref<boolean>
+
   loading: Ref<boolean>
 
   form: {
