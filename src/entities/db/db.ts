@@ -5,8 +5,8 @@ import { IDB, IExerciseTable } from '@/entities/db/db.types'
 export class DB extends Dexie implements IDB {
   exercises!: Table<IExerciseTable>
 
-  constructor(options?: DexieOptions) {
-    super('workoutPlannerDB', options)
+  constructor(db?: { name?: string; options?: DexieOptions }) {
+    super(db?.name || 'workoutPlannerDB', db?.options)
 
     this.version(1).stores({
       exercises: '++id, name, description, link'

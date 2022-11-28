@@ -12,15 +12,18 @@ describe('DBService', () => {
   let dbService: IDBService
 
   const exerciseName = 'exerciseName'
-  const exercise = new Exercise(
-    exerciseName,
-    'exerciseDescription',
-    'exerciseLink'
-  )
+  const exercise = new Exercise({
+    name: exerciseName,
+    description: 'exerciseDescription',
+    link: 'exerciseLink'
+  })
 
   describe('addExercise', () => {
+    let dbName = 0
+
     beforeEach(() => {
-      db = new DB()
+      db = new DB({ name: `${dbName}` })
+      dbName++
       dbService = new DBService(db)
     })
 

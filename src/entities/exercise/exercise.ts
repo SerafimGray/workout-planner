@@ -6,10 +6,10 @@ export class Exercise implements IExercise {
   readonly link: string
   readonly name: string
 
-  constructor(name: string, description = '', link = '') {
-    this.description = description
-    this.link = link
-    this.name = name
+  constructor(exercise: { name: string; description?: string; link?: string }) {
+    this.description = exercise.description || ''
+    this.link = exercise.link || ''
+    this.name = exercise.name
   }
 }
 
@@ -17,7 +17,7 @@ export class WorkoutExercise extends Exercise implements IWorkoutExercise {
   readonly sets: Array<Set>
 
   constructor(exercise: Exercise) {
-    super(exercise.name, exercise.description, exercise.link)
+    super(exercise)
     this.sets = []
   }
 }

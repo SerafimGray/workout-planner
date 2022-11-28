@@ -20,6 +20,7 @@
     "*.{ts,js,vue}": "eslint . --ext vue,ts,js --fix"
   },
   "dependencies": {
+    "@element-plus/icons-vue": "^2.0.10",
     "@vueuse/rxjs": "^9.6.0",
     "dexie": "^3.2.2",
     "element-plus": "^2.2.20",

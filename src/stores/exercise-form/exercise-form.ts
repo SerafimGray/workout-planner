@@ -13,8 +13,7 @@ import type {
 export const useExerciseFormStore = defineStore(
   'exerciseForm',
   (): IExerciseForm => {
-    const loading = ref(false)
-
+    //form
     const form = reactive({
       description: '',
       link: '',
@@ -22,34 +21,10 @@ export const useExerciseFormStore = defineStore(
       status: ''
     })
 
-    const isPropValid = reactive({
-      name: true,
-      link: true
-    })
-
-    let validate: Validate = null
-
-    function setValidate(value: Validate) {
-      validate = value
-    }
-
-    function add() {
-      if (validate && !loading.value) {
-        validate(validationCallback)
-      }
-    }
-
-    function validationCallback(valid: boolean) {
-      if (valid) {
-        addExercise()
-      }
-
-      return !!valid
-    }
+    const loading = ref(false)
 
     async function addExercise() {
-      const { description, link, name } = form
-      const exercise = new Exercise(name, description, link)
+      const exercise = new Exercise(form)
       loading.value = true
 
       try {
@@ -71,10 +46,37 @@ export const useExerciseFormStore = defineStore(
       form.link = ''
     }
 
+    //isPropValid
+    const isPropValid = reactive({
+      name: true,
+      link: true
+    })
+
     function onValidate(prop: FormItemProp, isValid: boolean) {
       isPropValid[prop as keyof typeof isPropValid] = isValid
     }
 
-    return { form, isPropValid, loading, setValidate, add, onValidate }
+    //validate
+    let validate: Validate = null
+
+    function setValidate(value: Validate) {
+      validate = value
+    }
+
+    function add() {
+      if (validate && !loading.value) {
+        validate(validationCallback)
+      }
+    }
+
+    function validationCallback(valid: boolean) {
+      if (valid) {
+        addExercise()
+      }
+
+      return !!valid
+    }
+
+    return { form, isPropValid, loading, add, onValidate, setValidate }
   }
 )

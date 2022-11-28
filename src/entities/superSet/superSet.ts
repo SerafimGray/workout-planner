@@ -6,7 +6,7 @@ export class SuperSet implements ISuperSet {
   readonly timeout: number
 
   constructor(exercises: Array<string>, timeout: number) {
-    this.exercises = exercises.map(name => new Exercise(name))
+    this.exercises = exercises.map(name => new Exercise({ name }))
     this.timeout = timeout
   }
 }

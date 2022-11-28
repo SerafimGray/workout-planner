@@ -24,7 +24,6 @@ export class ExercisesService implements IExercisesService {
   }
 
   private toExerciseEntity(exercise: IExercise) {
-    const { name, description, link } = exercise
-    return new Exercise(name, description, link)
+    return new Exercise(exercise)
   }
 }
