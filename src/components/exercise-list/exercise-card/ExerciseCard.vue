@@ -1,6 +1,8 @@
 <script lang="ts" setup>
-import { Delete, Edit } from '@element-plus/icons-vue'
+import { Delete } from '@element-plus/icons-vue'
 import { computed, reactive } from 'vue'
+
+import EditButton from '@/components/exercise-list/edit-button/EditButton.vue'
 
 const props = defineProps({
   exercise: {
@@ -23,7 +25,7 @@ const bodyStyle = reactive({
         <h3>{{ props.exercise.name }}</h3>
 
         <div class="header-buttons">
-          <el-button type="primary" :icon="Edit" circle />
+          <EditButton />
 
           <el-button type="danger" :icon="Delete" circle />
         </div>
