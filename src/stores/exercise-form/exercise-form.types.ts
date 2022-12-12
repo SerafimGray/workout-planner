@@ -11,8 +11,6 @@ export type Validate =
   | null
 
 export interface IExerciseForm {
-  loading: Ref<boolean>
-
   form: {
     description: string
     link: string
@@ -20,10 +18,14 @@ export interface IExerciseForm {
     status: string
   }
 
+  isDialogVisible: Ref<boolean>
+
   isPropValid: {
     name: boolean
     link: boolean
   }
+
+  loading: Ref<boolean>
 
   setValidate(value: Validate): void
 

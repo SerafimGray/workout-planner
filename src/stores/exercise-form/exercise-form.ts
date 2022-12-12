@@ -21,7 +21,7 @@ export const useExerciseFormStore = defineStore(
       status: ''
     })
 
-    const loading = ref(false)
+    const loading = ref(true)
 
     async function addExercise() {
       const exercise = new Exercise(form)
@@ -45,6 +45,9 @@ export const useExerciseFormStore = defineStore(
       form.description = ''
       form.link = ''
     }
+
+    //isDialogVisible
+    const isDialogVisible = ref(true)
 
     //isPropValid
     const isPropValid = reactive({
@@ -77,6 +80,14 @@ export const useExerciseFormStore = defineStore(
       return !!valid
     }
 
-    return { form, isPropValid, loading, add, onValidate, setValidate }
+    return {
+      form,
+      isDialogVisible,
+      isPropValid,
+      loading,
+      add,
+      onValidate,
+      setValidate
+    }
   }
 )

@@ -51,6 +51,7 @@ const bodyStyle = reactive({
 
 .exercise-card-header {
   align-items: center;
+  column-gap: 8px;
   display: flex;
   justify-content: space-between;
 }
