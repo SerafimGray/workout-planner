@@ -25,7 +25,7 @@ const bodyStyle = reactive({
         <h3>{{ props.exercise.name }}</h3>
 
         <div class="header-buttons">
-          <EditButton />
+          <EditButton :exercise="props.exercise" />
 
           <el-button type="danger" :icon="Delete" circle />
         </div>
