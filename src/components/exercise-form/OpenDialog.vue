@@ -1,0 +1,32 @@
+<script lang="ts" setup>
+import { Plus } from '@element-plus/icons-vue'
+
+import { useExerciseFormStore } from '@/stores/exercise-form/exercise-form'
+
+const exerciseFormStore = useExerciseFormStore()
+
+function openDialog() {
+  exerciseFormStore.isDialogVisible = true
+}
+</script>
+
+<template>
+  <el-button
+    aria-label="Add an Exercise"
+    circle
+    :icon="Plus"
+    id="add-exercise-button"
+    type="primary"
+    @click="openDialog"
+  />
+</template>
+
+<style scoped>
+#add-exercise-button {
+  bottom: 20px;
+  height: 56px;
+  position: fixed;
+  right: 20px;
+  width: 56px;
+}
+</style>

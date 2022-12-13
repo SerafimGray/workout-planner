@@ -23,7 +23,7 @@ export const useExerciseFormStore = defineStore(
       status: ''
     })
 
-    const loading = ref(true)
+    const loading = ref(false)
 
     async function addExercise() {
       const exercise = new Exercise(form)
@@ -34,9 +34,9 @@ export const useExerciseFormStore = defineStore(
         updateForm(id)
       } catch (error: unknown) {
         form.status = `Failed to add ${form.name}: ${error}`
+      } finally {
+        loading.value = false
       }
-
-      loading.value = false
     }
 
     const dbService = new DBService()

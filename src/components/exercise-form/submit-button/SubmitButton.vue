@@ -10,7 +10,12 @@ const { loading } = storeToRefs(exerciseFormStore)
 
 <template>
   <el-form-item>
-    <el-button :aria-disabled="loading" type="primary" @click="add">
+    <el-button
+      :aria-disabled="loading"
+      :loading="loading"
+      type="primary"
+      @click="add"
+    >
       Add Exercise
     </el-button>
   </el-form-item>
