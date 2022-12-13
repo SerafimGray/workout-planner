@@ -11,6 +11,8 @@ export type Validate =
   | null
 
 export interface IExerciseForm {
+  forEdit: Ref<boolean>
+
   form: {
     description: string
     link: string

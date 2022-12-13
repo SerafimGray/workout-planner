@@ -20,6 +20,7 @@ declare module '@vue/runtime-core' {
     ExerciseDialog: typeof import('./src/components/exercise-form/ExerciseDialog.vue')['default']
     ExerciseForm: typeof import('./src/components/exercise-form/ExerciseForm.vue')['default']
     ExerciseList: typeof import('./src/components/exercise-list/ExerciseList.vue')['default']
+    FormLegend: typeof import('./src/components/exercise-form/form-legend/FormLegend.vue')['default']
     LinkInput: typeof import('./src/components/exercise-form/link-input/LinkInput.vue')['default']
     NameInput: typeof import('./src/components/exercise-form/name-input/NameInput.vue')['default']
     OpenDialog: typeof import('./src/components/exercise-form/OpenDialog.vue')['default']

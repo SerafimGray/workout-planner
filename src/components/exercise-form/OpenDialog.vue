@@ -6,6 +6,7 @@ import { useExerciseFormStore } from '@/stores/exercise-form/exercise-form'
 const exerciseFormStore = useExerciseFormStore()
 
 function openDialog() {
+  exerciseFormStore.forEdit = false
   exerciseFormStore.isDialogVisible = true
 }
 </script>

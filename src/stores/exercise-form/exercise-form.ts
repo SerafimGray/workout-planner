@@ -13,6 +13,8 @@ import type {
 export const useExerciseFormStore = defineStore(
   'exerciseForm',
   (): IExerciseForm => {
+    const forEdit = ref(false)
+
     const isDialogVisible = ref(false)
 
     //form
@@ -80,6 +82,7 @@ export const useExerciseFormStore = defineStore(
     }
 
     return {
+      forEdit,
       form,
       isDialogVisible,
       isPropValid,

@@ -3,6 +3,7 @@ import type { FormInstance, FormRules } from 'element-plus'
 import { reactive, ref, watch } from 'vue'
 
 import DescriptionInput from '@/components/exercise-form/description-input/DescriptionInput.vue'
+import FormLegend from '@/components/exercise-form/form-legend/FormLegend.vue'
 import LinkInput from '@/components/exercise-form/link-input/LinkInput.vue'
 import NameInput from '@/components/exercise-form/name-input/NameInput.vue'
 import SubmitButton from '@/components/exercise-form/submit-button/SubmitButton.vue'
@@ -11,6 +12,7 @@ import { useExerciseFormStore } from '@/stores/exercise-form/exercise-form'
 const exerciseFormStore = useExerciseFormStore()
 
 const { form, onValidate } = exerciseFormStore
+
 const formRef = ref<FormInstance>()
 
 //rules
@@ -61,7 +63,7 @@ watch(
     :rules="rules"
     @validate="onValidate"
   >
-    <legend>Add new exercise</legend>
+    <FormLegend />
 
     <NameInput />
 
