@@ -5,20 +5,17 @@ import type {
 } from 'element-plus'
 import { Ref } from 'vue'
 
+import { IExercise } from '@/entities/exercise/exercise.types'
+
 export type Validate =
   | ((callback?: FormValidateCallback | undefined) => FormValidationResult)
   | undefined
   | null
 
 export interface IExerciseForm {
-  forEdit: Ref<boolean>
+  exercise: IExercise
 
-  form: {
-    description: string
-    link: string
-    name: string
-    status: string
-  }
+  forEdit: Ref<boolean>
 
   isDialogVisible: Ref<boolean>
 
@@ -29,9 +26,11 @@ export interface IExerciseForm {
 
   loading: Ref<boolean>
 
-  setValidate(value: Validate): void
-
-  add(): void
+  status: Ref<string>
 
   onValidate(prop: FormItemProp, isValid: boolean): void
+
+  put(): void
+
+  setValidate(value: Validate): void
 }

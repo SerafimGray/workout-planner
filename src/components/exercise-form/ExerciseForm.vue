@@ -11,7 +11,7 @@ import { useExerciseFormStore } from '@/stores/exercise-form/exercise-form'
 
 const exerciseFormStore = useExerciseFormStore()
 
-const { form, onValidate } = exerciseFormStore
+const { exercise, status, onValidate } = exerciseFormStore
 
 const formRef = ref<FormInstance>()
 
@@ -58,7 +58,7 @@ watch(
 <template>
   <el-form
     label-position="top"
-    :model="form"
+    :model="exercise"
     ref="formRef"
     :rules="rules"
     @validate="onValidate"
@@ -73,6 +73,6 @@ watch(
 
     <SubmitButton />
 
-    <p>{{ form.status }}</p>
+    <p>{{ status }}</p>
   </el-form>
 </template>

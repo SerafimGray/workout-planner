@@ -10,7 +10,8 @@ export class DBService implements IDBService {
     this.db = customDB || db
   }
 
-  addExercise(exercise: IExercise) {
-    return this.db.exercises.add(exercise)
+  putExercise(exercise: IExercise) {
+    const { description, id, link, name } = exercise
+    return this.db.exercises.put({ description, id, link, name })
   }
 }

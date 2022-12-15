@@ -1,9 +1,12 @@
 import { Set } from '@/entities/set/set'
 
 export interface IExercise {
-  readonly description: string
-  readonly link: string
-  readonly name: string
+  description?: string
+  id?: number
+  link?: string
+  name: string
+
+  clear(): void
 }
 
 export interface IWorkoutExercise extends IExercise {

@@ -17,11 +17,12 @@ function openDialog() {
     state.forEdit = true
     state.isDialogVisible = true
 
-    const { description, link, name } = props.exercise
-    state.form.description = description
-    state.form.link = link
-    state.form.name = name
-    state.form.status = ''
+    const { description, id, link, name } = props.exercise
+    state.exercise.description = description
+    state.exercise.id = id
+    state.exercise.link = link
+    state.exercise.name = name
+    state.status = ''
   })
 }
 </script>

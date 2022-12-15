@@ -1,4 +1,3 @@
-import type { IndexableType } from 'dexie'
 import { FormItemProp } from 'element-plus'
 import { defineStore } from 'pinia'
 import { reactive, ref } from 'vue'
@@ -13,44 +12,13 @@ import type {
 export const useExerciseFormStore = defineStore(
   'exerciseForm',
   (): IExerciseForm => {
+    const exercise = reactive(new Exercise({ name: '' }))
     const forEdit = ref(false)
-
     const isDialogVisible = ref(false)
-
-    //form
-    const form = reactive({
-      description: '',
-      link: '',
-      name: '',
-      status: ''
-    })
-
     const loading = ref(false)
+    const status = ref('')
 
-    async function addExercise() {
-      const exercise = new Exercise(form)
-      loading.value = true
-
-      try {
-        const id = await dbService.addExercise(exercise)
-        updateForm(id)
-      } catch (error: unknown) {
-        form.status = `Failed to add ${form.name}: ${error}`
-      } finally {
-        loading.value = false
-      }
-    }
-
-    const dbService = new DBService()
-
-    function updateForm(id: IndexableType) {
-      form.status = `Exercise ${form.name} successfully added. Got id ${id}`
-      form.name = ''
-      form.description = ''
-      form.link = ''
-    }
-
-    //isPropValid
+    //onValidate
     const isPropValid = reactive({
       name: true,
       link: true
@@ -60,14 +28,14 @@ export const useExerciseFormStore = defineStore(
       isPropValid[prop as keyof typeof isPropValid] = isValid
     }
 
-    //validate
+    //put
     let validate: Validate = null
 
     function setValidate(value: Validate) {
       validate = value
     }
 
-    function add() {
+    function put() {
       if (validate && !loading.value) {
         validate(validationCallback)
       }
@@ -75,20 +43,48 @@ export const useExerciseFormStore = defineStore(
 
     function validationCallback(valid: boolean) {
       if (valid) {
-        addExercise()
+        putExercise()
       }
 
       return !!valid
     }
 
+    const dbService = new DBService()
+
+    async function putExercise() {
+      loading.value = true
+
+      try {
+        await dbService.putExercise(exercise)
+        updateForm()
+      } catch (error: unknown) {
+        status.value = `Failed to add ${exercise.name}: ${error}`
+      } finally {
+        loading.value = false
+      }
+    }
+
+    function updateForm() {
+      let action = 'added'
+
+      if (forEdit.value) {
+        action = 'edited'
+      } else {
+        exercise.clear()
+      }
+
+      status.value = `Exercise ${exercise.name} successfully ${action}.`
+    }
+
     return {
+      exercise,
       forEdit,
-      form,
       isDialogVisible,
       isPropValid,
       loading,
-      add,
+      status,
       onValidate,
+      put,
       setValidate
     }
   }

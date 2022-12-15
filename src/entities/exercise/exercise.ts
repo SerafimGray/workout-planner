@@ -2,21 +2,30 @@ import { IExercise, IWorkoutExercise } from '@/entities/exercise/exercise.types'
 import { Set } from '@/entities/set/set'
 
 export class Exercise implements IExercise {
-  readonly description: string
-  readonly link: string
-  readonly name: string
+  description?: string
+  id?: number
+  link?: string
+  name: string
 
-  constructor(exercise: { name: string; description?: string; link?: string }) {
-    this.description = exercise.description || ''
-    this.link = exercise.link || ''
+  constructor(exercise: IExercise) {
+    this.description = exercise.description
+    this.id = exercise.id
+    this.link = exercise.link
     this.name = exercise.name
+  }
+
+  clear() {
+    this.description = ''
+    this.id = undefined
+    this.link = ''
+    this.name = ''
   }
 }
 
 export class WorkoutExercise extends Exercise implements IWorkoutExercise {
   readonly sets: Array<Set>
 
-  constructor(exercise: Exercise) {
+  constructor(exercise: IExercise) {
     super(exercise)
     this.sets = []
   }

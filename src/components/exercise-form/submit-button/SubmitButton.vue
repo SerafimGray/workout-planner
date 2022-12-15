@@ -5,7 +5,7 @@ import { computed } from 'vue'
 import { useExerciseFormStore } from '@/stores/exercise-form/exercise-form'
 
 const exerciseFormStore = useExerciseFormStore()
-const { add } = exerciseFormStore
+const { put } = exerciseFormStore
 const { forEdit, loading } = storeToRefs(exerciseFormStore)
 
 const buttonText = computed(() => {
@@ -20,7 +20,7 @@ const buttonText = computed(() => {
       :aria-disabled="loading"
       :loading="loading"
       type="primary"
-      @click="add"
+      @click="put"
     >
       {{ buttonText }}
     </el-button>

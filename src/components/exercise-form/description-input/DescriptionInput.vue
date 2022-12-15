@@ -14,7 +14,7 @@ const props = defineProps({
 <template>
   <el-form-item :label="props.label" prop="description">
     <el-input
-      v-model="exerciseFormStore.form.description"
+      v-model="exerciseFormStore.exercise.description"
       :autosize="{ minRows: 2 }"
       placeholder="Enter exercise description"
       type="textarea"

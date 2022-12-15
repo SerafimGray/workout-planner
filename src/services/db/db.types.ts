@@ -5,5 +5,5 @@ import { Exercise } from '@/entities/exercise/exercise'
 export interface IDBService {
   readonly db: Dexie
 
-  addExercise(exercise: Exercise): PromiseExtended<IndexableType>
+  putExercise(exercise: Exercise, key?: number): PromiseExtended<IndexableType>
 }

@@ -6,8 +6,13 @@ import { useExerciseFormStore } from '@/stores/exercise-form/exercise-form'
 const exerciseFormStore = useExerciseFormStore()
 
 function openDialog() {
-  exerciseFormStore.forEdit = false
-  exerciseFormStore.isDialogVisible = true
+  exerciseFormStore.$patch(state => {
+    state.forEdit = false
+    state.isDialogVisible = true
+
+    state.exercise.clear()
+    state.status = ''
+  })
 }
 </script>
 

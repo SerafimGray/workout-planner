@@ -9,13 +9,13 @@ const props = defineProps({
 })
 
 const exerciseFormStore = useExerciseFormStore()
-const { form, isPropValid } = exerciseFormStore
+const { exercise, isPropValid } = exerciseFormStore
 </script>
 
 <template>
   <el-form-item :label="props.name" prop="name">
     <el-input
-      v-model="form.name"
+      v-model="exercise.name"
       aria-describedby="exercise-name-alert"
       :aria-invalid="!isPropValid.name"
       class="exercise-name-input"

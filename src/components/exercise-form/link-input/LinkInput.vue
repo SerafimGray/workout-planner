@@ -9,13 +9,13 @@ const props = defineProps({
 })
 
 const exerciseFormStore = useExerciseFormStore()
-const { form, isPropValid } = exerciseFormStore
+const { exercise, isPropValid } = exerciseFormStore
 </script>
 
 <template>
   <el-form-item :label="props.label" prop="link">
     <el-input
-      v-model="form.link"
+      v-model="exercise.link"
       aria-describedby="exercise-link-alert"
       :aria-invalid="!isPropValid.link"
       clearable
