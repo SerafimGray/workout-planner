@@ -3,6 +3,8 @@ import { Delete } from '@element-plus/icons-vue'
 import { computed, reactive } from 'vue'
 
 import EditButton from '@/components/exercise-list/edit-button/EditButton.vue'
+import ExerciseDescription from '@/components/exercise-list/exercise-description/ExerciseDescription.vue'
+import ExerciseLink from '@/components/exercise-list/exercise-link/ExerciseLink.vue'
 
 const props = defineProps({
   exercise: {
@@ -10,6 +12,9 @@ const props = defineProps({
     default: () => ({})
   }
 })
+
+const description = computed(() => props.exercise.description)
+const link = computed(() => props.exercise.link)
 
 const isBody = computed(() => props.exercise.description || props.exercise.link)
 
@@ -32,13 +37,9 @@ const bodyStyle = reactive({
       </div>
     </template>
 
-    <div class="exercise-description" v-if="props.exercise.description">
-      {{ props.exercise.description }}
-    </div>
+    <ExerciseDescription :description="description" v-if="description" />
 
-    <div class="exercise-link" v-if="props.exercise.link">
-      {{ props.exercise.link }}
-    </div>
+    <ExerciseLink :link="link" v-if="link" />
   </el-card>
 </template>
 
