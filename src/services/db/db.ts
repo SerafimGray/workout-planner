@@ -1,3 +1,5 @@
+import { IndexableType } from 'dexie'
+
 import { db } from '@/entities/db/db'
 import type { IDB } from '@/entities/db/db.types'
 import { IExercise } from '@/entities/exercise/exercise.types'
@@ -10,7 +12,7 @@ export class DBService implements IDBService {
     this.db = customDB || db
   }
 
-  deleteExercise(key: number) {
+  deleteExercise(key: IndexableType) {
     return this.db.exercises.delete(key)
   }
 

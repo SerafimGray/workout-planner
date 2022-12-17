@@ -18,24 +18,35 @@ describe('DBService', () => {
     link: 'exerciseLink'
   })
 
-  describe('addExercise', () => {
-    let dbName = 0
+  let dbName = 0
 
-    beforeEach(() => {
-      db = new DB({ name: `${dbName}` })
-      dbName++
-      dbService = new DBService(db)
+  beforeEach(() => {
+    db = new DB({ name: `${dbName}` })
+    dbName++
+    dbService = new DBService(db)
+  })
+
+  describe('deleteExercise', () => {
+    it('should delete record from exercises table', async () => {
+      const id = await dbService.putExercise(exercise)
+
+      await dbService.deleteExercise(id)
+      const exercises = await db.exercises.toArray()
+
+      expect(exercises.length).toBe(0)
     })
+  })
 
+  describe('putExercise', () => {
     it('should add record to exercises table', async () => {
-      await dbService.addExercise(exercise)
+      await dbService.putExercise(exercise)
       const exercises = await db.exercises.toArray()
 
       expect(exercises[0].name).toBe(exerciseName)
     })
 
     it('should return exercise id', async () => {
-      const id = await dbService.addExercise(exercise)
+      const id = await dbService.putExercise(exercise)
       expect(id).toBeTypeOf('number')
     })
   })
