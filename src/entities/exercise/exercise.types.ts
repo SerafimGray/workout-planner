@@ -5,7 +5,9 @@ export interface IExercise {
   id?: number
   link?: string
   name: string
+}
 
+export interface IExerciseEntity extends IExercise {
   clear(): void
 }
 

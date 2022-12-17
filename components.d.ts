@@ -7,6 +7,7 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    DeleteButton: typeof import('./src/components/exercise-list/delete-button/DeleteButton.vue')['default']
     DescriptionInput: typeof import('./src/components/exercise-form/description-input/DescriptionInput.vue')['default']
     EditButton: typeof import('./src/components/exercise-list/edit-button/EditButton.vue')['default']
     ElButton: typeof import('element-plus/es')['ElButton']

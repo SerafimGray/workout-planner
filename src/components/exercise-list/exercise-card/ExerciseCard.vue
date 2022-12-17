@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import { Delete } from '@element-plus/icons-vue'
 import { computed, reactive } from 'vue'
 
+import DeleteButton from '@/components/exercise-list/delete-button/DeleteButton.vue'
 import EditButton from '@/components/exercise-list/edit-button/EditButton.vue'
 import ExerciseDescription from '@/components/exercise-list/exercise-description/ExerciseDescription.vue'
 import ExerciseLink from '@/components/exercise-list/exercise-link/ExerciseLink.vue'
@@ -32,7 +32,7 @@ const bodyStyle = reactive({
         <div class="header-buttons">
           <EditButton :exercise="props.exercise" />
 
-          <el-button type="danger" :icon="Delete" circle />
+          <DeleteButton :id="props.exercise.id" />
         </div>
       </div>
     </template>
