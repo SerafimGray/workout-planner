@@ -9,7 +9,7 @@ import { useExerciseFormStore } from '@/stores/exercise-form/exercise-form'
 describe('DescriptionInput', () => {
   const initialState = {
     exerciseForm: {
-      form: {
+      exercise: {
         description: ''
       }
     }
@@ -36,12 +36,12 @@ describe('DescriptionInput', () => {
   })
 
   it('should display store value', async () => {
-    await store.$patch({ form: { description: fakeDescription } })
+    await store.$patch({ exercise: { description: fakeDescription } })
     expect(textarea.element.value).toBe(fakeDescription)
   })
 
   it('should change store value on input', async () => {
     await textarea.setValue(fakeDescription)
-    expect(store.form.description).toBe(fakeDescription)
+    expect(store.exercise.description).toBe(fakeDescription)
   })
 })
