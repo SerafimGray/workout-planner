@@ -9,7 +9,7 @@ import { useExerciseFormStore } from '@/stores/exercise-form/exercise-form'
 describe('LinkInput', () => {
   const initialState = {
     exerciseForm: {
-      form: {
+      exercise: {
         name: ''
       },
       isPropValid: {
@@ -40,11 +40,11 @@ describe('LinkInput', () => {
 
   it('should change store value on input', async () => {
     await input.setValue(fakeName)
-    expect(store.form.name).toBe(fakeName)
+    expect(store.exercise.name).toBe(fakeName)
   })
 
   it('should change input value on store change', async () => {
-    await store.$patch({ form: { name: fakeName } })
+    await store.$patch({ exercise: { name: fakeName } })
     expect(input.element.value).toBe(fakeName)
   })
 
