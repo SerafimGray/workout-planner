@@ -18,6 +18,7 @@ const buttonText = computed(() => {
   <el-form-item>
     <el-button
       :aria-disabled="loading"
+      class="put-exercise-button"
       :loading="loading"
       type="primary"
       @click="put"
@@ -28,7 +29,7 @@ const buttonText = computed(() => {
 </template>
 
 <style scoped>
-button[aria-disabled='true'] {
+.put-exercise-button[aria-disabled='true'] {
   opacity: 0.7;
   cursor: not-allowed;
 }

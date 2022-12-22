@@ -10,7 +10,7 @@ describe('SubmitButton', () => {
   const initialState = {
     exerciseForm: {
       loading: false,
-      add: vi.fn()
+      put: vi.fn()
     }
   }
 
@@ -27,9 +27,9 @@ describe('SubmitButton', () => {
     expect(button.exists()).toBe(true)
   })
 
-  it('should run store add function on click', () => {
+  it('should run store put function on click', () => {
     button.trigger('click')
-    expect(store.add).toHaveBeenCalled()
+    expect(store.put).toHaveBeenCalled()
   })
 
   it('should be enabled by default', () => {
