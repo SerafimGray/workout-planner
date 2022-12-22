@@ -18,6 +18,10 @@ export const useExerciseFormStore = defineStore(
     const loading = ref(false)
     const status = ref('')
 
+    function clearExercise() {
+      exercise.clear()
+    }
+
     //onValidate
     const isPropValid = reactive({
       name: true,
@@ -83,6 +87,7 @@ export const useExerciseFormStore = defineStore(
       isPropValid,
       loading,
       status,
+      clearExercise,
       onValidate,
       put,
       setValidate

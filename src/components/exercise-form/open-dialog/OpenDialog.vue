@@ -9,10 +9,9 @@ function openDialog() {
   exerciseFormStore.$patch(state => {
     state.forEdit = false
     state.isDialogVisible = true
-
-    state.exercise.clear()
     state.status = ''
   })
+  exerciseFormStore.clearExercise()
 }
 </script>
 
@@ -20,15 +19,15 @@ function openDialog() {
   <el-button
     aria-label="Add an Exercise"
     circle
+    class="add-exercise-button"
     :icon="Plus"
-    id="add-exercise-button"
     type="primary"
     @click="openDialog"
   />
 </template>
 
 <style scoped>
-#add-exercise-button {
+.add-exercise-button {
   bottom: 20px;
   height: 56px;
   position: fixed;

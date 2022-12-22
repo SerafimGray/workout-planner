@@ -28,6 +28,8 @@ export interface IExerciseForm {
 
   status: Ref<string>
 
+  clearExercise(): void
+
   onValidate(prop: FormItemProp, isValid: boolean): void
 
   put(): void
