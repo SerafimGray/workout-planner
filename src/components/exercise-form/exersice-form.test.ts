@@ -10,7 +10,8 @@ describe('ExerciseForm', () => {
   const initialState = {
     exerciseForm: {
       setValidate: vi.fn()
-    }
+    },
+    status: ''
   }
 
   const wrapper = mount(ExerciseForm, {
@@ -26,6 +27,7 @@ describe('ExerciseForm', () => {
   })
 
   const store = useExerciseFormStore()
+  const fakeStatus = 'fakeStatus'
 
   it('should render form', () => {
     const form = wrapper.find('form')
@@ -39,5 +41,10 @@ describe('ExerciseForm', () => {
 
   it('should set store validate value', () => {
     expect(store.setValidate).toBeCalled()
+  })
+
+  it('should render status message', async () => {
+    await store.$patch({ status: fakeStatus })
+    expect(wrapper.find('.form-status').text()).toBe(fakeStatus)
   })
 })

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { FormInstance, FormRules } from 'element-plus'
+import { storeToRefs } from 'pinia'
 import { reactive, ref, watch } from 'vue'
 
 import DescriptionInput from '@/components/exercise-form/description-input/DescriptionInput.vue'
@@ -11,7 +12,8 @@ import { useExerciseFormStore } from '@/stores/exercise-form/exercise-form'
 
 const exerciseFormStore = useExerciseFormStore()
 
-const { exercise, status, onValidate } = exerciseFormStore
+const { exercise, onValidate } = exerciseFormStore
+const { status } = storeToRefs(exerciseFormStore)
 
 const formRef = ref<FormInstance>()
 
@@ -73,6 +75,6 @@ watch(
 
     <SubmitButton />
 
-    <p>{{ status }}</p>
+    <p class="form-status">{{ status }}</p>
   </el-form>
 </template>
