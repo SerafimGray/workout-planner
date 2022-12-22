@@ -19,7 +19,7 @@ declare module '@vue/runtime-core' {
     ElInput: typeof import('element-plus/es')['ElInput']
     ExerciseCard: typeof import('./src/components/exercise-list/exercise-card/ExerciseCard.vue')['default']
     ExerciseDescription: typeof import('./src/components/exercise-list/exercise-description/ExerciseDescription.vue')['default']
-    ExerciseDialog: typeof import('./src/components/exercise-form/ExerciseDialog.vue')['default']
+    ExerciseDialog: typeof import('./src/components/exercise-form/exercise-dialog/ExerciseDialog.vue')['default']
     ExerciseForm: typeof import('./src/components/exercise-form/ExerciseForm.vue')['default']
     ExerciseLink: typeof import('./src/components/exercise-list/exercise-link/ExerciseLink.vue')['default']
     ExerciseList: typeof import('./src/components/exercise-list/ExerciseList.vue')['default']
